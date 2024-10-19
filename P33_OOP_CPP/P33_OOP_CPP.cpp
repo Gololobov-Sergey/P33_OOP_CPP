@@ -7,7 +7,11 @@ using namespace std;
 
 int main()
 {
+
+    cout << Student::getCount() << endl;
+
     Student st;
+    cout << st.getCount() << endl;
     //st.age = 2000;
 
     st.setAge(2000);
@@ -18,6 +22,8 @@ int main()
     st.print();
     {
         Student* st2 = new Student("Vasya", 20);
+
+        cout << st2->getCount() << endl;
         //st2->setAge(20);
         st2->setName("Vasya 2");
         st2->print();
@@ -32,6 +38,6 @@ int main()
         delete st2;
     }
 
-    cout << *m << endl;
+    
 }
 

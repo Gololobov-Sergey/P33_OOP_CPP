@@ -12,7 +12,11 @@ class Student
 	int* marks = nullptr;
 	int size = 0;
 
+	static int count;
+
 public:
+
+	
 
 	Student()
 	{
@@ -86,4 +90,12 @@ public:
 	{
 		return marks;
 	}
+
+
+	static int getCount()
+	{
+		return count;
+	}
 };
+
+int Student::count = 100;

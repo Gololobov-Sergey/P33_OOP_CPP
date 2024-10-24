@@ -4,8 +4,14 @@
 
 using namespace std;
 
+enum TYPE 
+{
+	ASPIRANT, DOCTOR, INTERN
+};
+
 class Student
 {
+	TYPE type;
 
 	char* name;
 	int age;
@@ -14,22 +20,19 @@ class Student
 
 	static int count;
 
+	const int id;
+
 public:
 
-	
+	Student(int id) : Student(id, "No name", 0) {}
 
-	Student()
+	Student(int id, const char* n, int a) : id{id}
 	{
-		age = 0;
-		setName("No name");
-		cout << "Constructor" << endl;
-	}
-
-	Student(const char* n, int a)
-	{
+		type = TYPE::ASPIRANT;
 		setAge(a);
 		setName(n);
 		cout << "Constructor" << endl;
+		count++;
 	}
 
 	~Student()
@@ -37,7 +40,25 @@ public:
 		delete name;
 		delete marks;
 		cout << "Destructor" << endl;
+		count--;
 	}
+
+
+	Student(const Student& obj) : id(obj.id)
+	{
+		age = obj.age;
+		size = obj.size;
+		name = new char[strlen(obj.name) + 1];
+		strcpy_s(name, strlen(obj.name) + 1, obj.name);
+		marks = new int[size];
+		for (size_t i = 0; i < size; i++)
+		{
+			marks[i] = obj.marks[i];
+		}
+		cout << "Constructor Copy" << endl;
+		count++;
+	}
+
 
 	void setAge(int a)
 	{
@@ -46,7 +67,7 @@ public:
 		age = a;
 	}
 
-	int getAge()
+	int getAge() const
 	{
 		return age;
 	}
@@ -63,12 +84,12 @@ public:
 		}
 	}
 
-	char* getName()
+	char* getName() const
 	{
 		return name;
 	}
 
-	void print()
+	void print() const
 	{
 		cout << "Name  : " << name << endl;
 		cout << "Age   : " << age << endl;
@@ -86,7 +107,7 @@ public:
 			addValueArray(marks, size, mark);
 	}
 
-	int* getMarks()
+	int* getMarks() const
 	{
 		return marks;
 	}
@@ -98,4 +119,4 @@ public:
 	}
 };
 
-int Student::count = 100;
+int Student::count = 0;

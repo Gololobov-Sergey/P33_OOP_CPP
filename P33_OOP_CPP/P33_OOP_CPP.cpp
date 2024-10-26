@@ -4,6 +4,7 @@
 #include"Student.h"
 #include"Array.h"
 #include"Time.h"
+#include"Reservoir.h"
 
 using namespace std;
 
@@ -19,15 +20,64 @@ void printArr(Array arr)
     arr.print();
 }
 
+
+enum class Color
+{
+    Black, White
+};
+
+enum class Animal
+{
+    CAT, DOG, Black
+};
+
+union MyUnion
+{
+    int a;
+    char b;
+};
+
 int main()
 {
+    cout.setf(ios::boolalpha);
 
-    Time t1;
-    Time t2(20);
-    Time t3(1, 30);
-    Time t4(1, 4, 55);
 
-    t1.print();
+    String s();
+    String s(20);
+    String s("mama");
+
+    MyUnion m = { 97 };
+    cout << m.a << endl;
+    cout << m.b << endl;
+
+
+    Reservoir r1(TYPE::OCEAN, "Anlantic", 400, 500, 5000);
+    Reservoir r2(TYPE::SEA, "Black Sea", 400, 500, 2000);
+    r1.info();
+    r2.info();
+
+    cout << r1.equalType(r2) << endl;
+
+
+    /*r1.copy(r2);
+    r1.info();*/
+    //r2.getArea();  //getArea(r2)
+
+    //Color c = Color::Black;
+    //Animal a = Animal::CAT;
+    //if (c == 0)
+    //{
+    //    cout << "Yes" << endl;
+    //}
+
+
+
+    //Time t1;
+    //Time t2(20);
+    /*Time t3(1, 30);
+    Time t4(1, 4, 55);*/
+
+    //t1.print();
 
     /*Array a(10);
     a.fill();

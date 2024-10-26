@@ -135,6 +135,7 @@
     <ClInclude Include="function.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="myFunc.h" />
+    <ClInclude Include="Reservoir.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>

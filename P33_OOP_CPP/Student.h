@@ -4,14 +4,14 @@
 
 using namespace std;
 
-enum TYPE 
+enum TYPE_STUDENT 
 {
 	ASPIRANT, DOCTOR, INTERN
 };
 
 class Student
 {
-	TYPE type;
+	//TYPE type;
 
 	char* name;
 	int age;
@@ -28,7 +28,7 @@ public:
 
 	Student(int id, const char* n, int a) : id{id}
 	{
-		type = TYPE::ASPIRANT;
+		//type = TYPE::ASPIRANT;
 		setAge(a);
 		setName(n);
 		cout << "Constructor" << endl;

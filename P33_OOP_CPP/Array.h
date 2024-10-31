@@ -33,6 +33,24 @@ public:
 		}
 	}
 
+	Array& operator=(const Array& obj)
+	{
+		if (this == &obj)
+			return *this;
+
+		delete arr;
+
+		size = obj.size;
+		arr = new int[size];
+		for (size_t i = 0; i < size; i++)
+		{
+			arr[i] = obj.arr[i];
+		}
+
+		return *this;
+	}
+
+
 	void create(int s)
 	{
 		size = s;
@@ -58,6 +76,8 @@ public:
 
 
 	void add(int value);
+
+	Array operator+(const Array& a);
 
 };
 

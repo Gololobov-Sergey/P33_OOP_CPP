@@ -59,6 +59,26 @@ public:
 		count++;
 	}
 
+	Student& operator=(const Student& obj)
+	{
+		if (this == &obj)
+			return *this;
+
+		delete name;
+
+		age = obj.age;
+		size = obj.size;
+		name = new char[strlen(obj.name) + 1];
+		strcpy_s(name, strlen(obj.name) + 1, obj.name);
+		marks = new int[size];
+		for (size_t i = 0; i < size; i++)
+		{
+			marks[i] = obj.marks[i];
+		}
+
+		return *this;
+	}
+
 
 	void setAge(int a)
 	{

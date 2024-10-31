@@ -5,6 +5,7 @@
 #include"Array.h"
 #include"Time.h"
 #include"Reservoir.h"
+#include"Fraction.h"
 
 using namespace std;
 
@@ -41,8 +42,40 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+    ///// 31.10.2024  ///////////////////////
 
-    String s();
+    // :: sizeof ?: * .
+
+    // - + ++ -- 
+    // = + - * / % += -= *= /= %= 
+
+    // !
+    // > < == != >= <=
+
+
+    //int a = 10;
+    //int b = !a;
+
+    //Fraction f1(1, 2);
+    //Fraction f2(1, 4);
+    ////Fraction f3 = f1.min(f2);
+    //Fraction f3 = f1 + f2; // f1.operator+(f2)
+    //f3.print();
+    //Fraction f4 = f1;
+    //f4.print();
+    //f1.print();
+    //f1 = f2 = f4;
+
+    Student s1(1, "Vasya", 15);
+    {
+        Student s2(2);
+
+        s1 = s1;
+        s1.print();
+    }
+    s1.print();
+
+    /*String s();
     String s(20);
     String s("mama");
 
@@ -56,7 +89,7 @@ int main()
     r1.info();
     r2.info();
 
-    cout << r1.equalType(r2) << endl;
+    cout << r1.equalType(r2) << endl;*/
 
 
     /*r1.copy(r2);

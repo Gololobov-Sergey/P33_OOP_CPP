@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include"Reservoir.h"
 using namespace std;
 
 class Fraction
@@ -33,9 +34,18 @@ public:
 
 	Fraction operator++(int); //post
 
-	Fraction& operator=(const Fraction& f);
+	
 
 	Fraction operator+(Fraction f);
+
+
+	auto operator<=>(const Fraction& f) const;
+
+
+	operator float();
+	operator Reservoir();
+
+	void operator()(int a, int b);
 
 };
 void Fraction::setDen(int den)
@@ -108,8 +118,31 @@ inline Fraction Fraction::operator+(Fraction f)
 	return Fraction(newNum, newDen);
 }
 
+Fraction::operator float()
+{
+	return (float)num / den;
+}
 
-void Fraction::print() const {
+Fraction::operator Reservoir()
+{
+	return Reservoir(TYPE::LAKE, "werwer", num, den, 0);
+}
+
+void Fraction::operator()(int a, int b)
+{
+	num = a;
+	den = b;
+}
+
+
+auto Fraction::operator<=>(const Fraction& f) const
+{
+	return (float)num / den <=> (float)f.num / f.den;
+}
+
+
+void Fraction::print() const 
+{
 	cout << num << "/" << den << endl;
 }
 

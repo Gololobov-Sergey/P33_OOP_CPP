@@ -79,6 +79,15 @@ public:
 
 	Array operator+(const Array& a);
 
+	Array operator+(int a);
+	
+	void operator+=(const Array& a);
+
+	int& operator[](int index);
+
+	void operator()(int s);
+
+
 };
 
 void Array::add(int value)
@@ -92,4 +101,39 @@ void Array::add(int value)
 	delete arr;
 	arr = temp;
 	size++;
+}
+
+Array Array::operator+(const Array& a)
+{
+	Array newArr(this->size + a.size);
+
+	for (size_t i = 0; i < this->size; i++)
+	{
+		newArr.arr[i] = this->arr[i];
+	}
+
+	for (size_t i = 0; i < a.size; i++)
+	{
+		newArr.arr[i + this->size] = a.arr[i];
+	}
+	
+	return newArr;
+}
+
+void Array::operator+=(const Array& a)
+{
+	*this = *this + a;
+}
+
+int& Array::operator[](int index)
+{
+	return arr[index];
+}
+
+void Array::operator()(int s)
+{
+	delete arr;
+	size = s;
+	arr = new int[size];
+	fill();
 }

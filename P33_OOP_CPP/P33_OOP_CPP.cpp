@@ -42,6 +42,43 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+
+    Array a1(10);
+    a1.fill();
+    a1.print();
+
+    Array a2(5);
+    a2.fill();
+    a2.print();
+
+    a1 += a2;
+
+    Array a3 = a1 + a2;
+    a3.print();
+
+    a1[3] = 100;
+    cout << a1[3] << endl;
+    
+    a1(15);
+    a1.print();
+
+
+    Fraction f1(1, 2);
+    Fraction f2(1, 4);
+    cout << (f1 > f2) << endl;
+    cout << (f1 < f2) << endl;
+    cout << (f1 >= f2) << endl;
+    cout << (f1 <= f2) << endl;
+
+    f1(3, 5);
+
+    float f = f1;
+
+    Reservoir r = f1;
+    r.info();
+
+
+
     ///// 31.10.2024  ///////////////////////
 
     // :: sizeof ?: * .
@@ -51,6 +88,10 @@ int main()
 
     // !
     // > < == != >= <=
+
+    // [] 
+
+
 
 
     //int a = 10;
@@ -66,14 +107,14 @@ int main()
     //f1.print();
     //f1 = f2 = f4;
 
-    Student s1(1, "Vasya", 15);
+    /*Student s1(1, "Vasya", 15);
     {
         Student s2(2);
 
         s1 = s1;
         s1.print();
     }
-    s1.print();
+    s1.print();*/
 
     /*String s();
     String s(20);

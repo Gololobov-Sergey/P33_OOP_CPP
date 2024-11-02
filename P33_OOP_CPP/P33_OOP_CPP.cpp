@@ -1,11 +1,13 @@
 ﻿
 #include <iostream>
+#include <math.h>
 
 #include"Student.h"
 #include"Array.h"
 #include"Time.h"
 #include"Reservoir.h"
 #include"Fraction.h"
+#include"String.h"
 
 using namespace std;
 
@@ -42,8 +44,19 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+   /* String s1("mamasssa");
+    String s2("papacca");
+    String s3 = s1 * s2;
+    cout << s3 << endl;
+    cin >> s3;
+    cout << s3 << endl;
 
-    Array a1(10);
+    string s;*/
+    
+
+
+
+    /*Array a1(10);
     a1.fill();
     a1.print();
 
@@ -75,7 +88,7 @@ int main()
     float f = f1;
 
     Reservoir r = f1;
-    r.info();
+    r.info();*/
 
 
 

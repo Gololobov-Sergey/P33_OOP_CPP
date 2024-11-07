@@ -47,7 +47,16 @@ public:
 
 	void operator()(int a, int b);
 
+	friend ostream& operator<<(ostream& out, const Fraction& f);
+
 };
+
+ostream& operator<<(ostream& out, const Fraction& f)
+{
+	out << f.num << "/" << f.den;
+	return out;
+}
+
 void Fraction::setDen(int den)
 {
 	this->den = den;

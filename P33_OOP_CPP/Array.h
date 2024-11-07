@@ -1,20 +1,25 @@
 #pragma once
+#include"Fraction.h"
 
-
+template<class T>
 class Array
 {
-	int* arr;
-	int size;
+	T* arr;
+	int _size;
+	int _grow = 1;
+	int _capacity;
 
 public:
 	Array()
 	{
 		arr = nullptr;
-		size = 0;
+		_capacity = 0;
 	}
 
-	explicit Array(int s)
+	explicit Array(int s, int _grow = 1)
 	{
+		_capacity = s;
+		this->_grow = _grow;
 		create(s);
 	}
 
@@ -25,9 +30,11 @@ public:
 
 	Array(const Array& obj)
 	{
-		size = obj.size;
-		arr = new int[size];
-		for (size_t i = 0; i < size; i++)
+		_capacity = obj._capacity;
+		_size = obj._size;
+		_grow = obj._grow;
+		arr = new T[_capacity];
+		for (size_t i = 0; i < _capacity; i++)
 		{
 			arr[i] = obj.arr[i];
 		}
@@ -40,9 +47,11 @@ public:
 
 		delete arr;
 
-		size = obj.size;
-		arr = new int[size];
-		for (size_t i = 0; i < size; i++)
+		_capacity = obj._capacity;
+		_size = obj._size;
+		_grow = obj._grow;
+		arr = new T[_capacity];
+		for (size_t i = 0; i < _capacity; i++)
 		{
 			arr[i] = obj.arr[i];
 		}
@@ -53,21 +62,17 @@ public:
 
 	void create(int s)
 	{
-		size = s;
-		arr = new int[size];
+		_capacity = s;
+		arr = new T[_capacity];
 	}
 
-	void fill() const
-	{
-		for (size_t i = 0; i < size; i++)
-		{
-			arr[i] = rand() % 10;
-		}
-	}
+	void fill(int min, int max);
+
+	void fill();
 
 	void print() const
 	{
-		for (size_t i = 0; i < size; i++)
+		for (size_t i = 0; i < _size; i++)
 		{
 			cout << arr[i] << " ";
 		}
@@ -75,65 +80,159 @@ public:
 	}
 
 
-	void add(int value);
+	void add(const T& value);
 
 	Array operator+(const Array& a);
 
-	Array operator+(int a);
-	
 	void operator+=(const Array& a);
 
-	int& operator[](int index);
+	T& operator[](int index);
 
 	void operator()(int s);
 
+	void for_each(void(*func)(T&));
 
+	int size() const;
+
+	int grow() const;
+
+	int capacity() const;
+
+	const T* getData() const;
 };
 
-void Array::add(int value)
+template<class T>
+void Array<T>::fill()
 {
-	int* temp = new int[size + 1];
-	for (size_t i = 0; i < size; i++)
+	_size = _capacity;
+	for (size_t i = 0; i < _capacity; i++)
 	{
-		temp[i] = arr[i];
+		arr[i] = T();
 	}
-	temp[size] = value;
-	delete arr;
-	arr = temp;
-	size++;
 }
 
-Array Array::operator+(const Array& a)
-{
-	Array newArr(this->size + a.size);
 
-	for (size_t i = 0; i < this->size; i++)
+template<>
+void Array<Fraction>::fill()
+{
+	_size = _capacity;
+	for (size_t i = 0; i < _capacity; i++)
+	{
+		arr[i] = Fraction(rand() % 10, rand() % 9 + 1);
+	}
+}
+
+template<>
+void Array<int>::fill(int min, int max) 
+{
+	_size = _capacity;
+	for (size_t i = 0; i < _capacity; i++)
+	{
+		arr[i] = rand() % (max - min + 1) + min;
+	}
+}
+
+template<>
+void Array<int>::fill()
+{
+	_size = _capacity;
+	for (size_t i = 0; i < _capacity; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+}
+
+
+template<class T>
+void Array<T>::add(const T& value)
+{
+	if (_size == _capacity)
+	{
+		T* temp = new T[_capacity + _grow];
+		for (size_t i = 0; i < _size; i++)
+		{
+			temp[i] = arr[i];
+		}
+		temp[_size] = value;
+		delete arr;
+		arr = temp;
+		_capacity += _grow;
+	}
+	else
+	{
+		arr[_size] = value;
+	}
+	_size++;
+}
+
+template<class T>
+Array<T> Array<T>::operator+(const Array& a)
+{
+	Array newArr(this->_size + a._size);
+
+	for (size_t i = 0; i < this->_size; i++)
 	{
 		newArr.arr[i] = this->arr[i];
 	}
 
-	for (size_t i = 0; i < a.size; i++)
+	for (size_t i = 0; i < a._size; i++)
 	{
-		newArr.arr[i + this->size] = a.arr[i];
+		newArr.arr[i + this->_size] = a.arr[i];
 	}
-	
+
 	return newArr;
 }
 
-void Array::operator+=(const Array& a)
+template<class T>
+void Array<T>::operator+=(const Array& a)
 {
 	*this = *this + a;
 }
 
-int& Array::operator[](int index)
+template<class T>
+T& Array<T>::operator[](int index)
 {
 	return arr[index];
 }
 
-void Array::operator()(int s)
+template<class T>
+void Array<T>::operator()(int s)
 {
 	delete arr;
-	size = s;
-	arr = new int[size];
+	_size = s;
+	arr = new T[_size];
 	fill();
+}
+
+template<class T>
+void Array<T>::for_each(void(*func)(T&))
+{
+	for (size_t i = 0; i < _size; i++)
+	{
+		func(arr[i]);
+	}
+}
+
+template<class T>
+int Array<T>::size() const
+{
+	return _size;
+}
+
+template<class T>
+int Array<T>::grow() const
+{
+	return _grow;
+}
+
+template<class T>
+int Array<T>::capacity() const
+{
+	return _capacity;
+}
+
+template<class T>
+const T* Array<T>::getData() const
+{
+	return arr;
 }

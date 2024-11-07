@@ -17,8 +17,8 @@ void printStudent(Student st)
     st.print();
 }
 
-
-void printArr(Array arr)
+template<class T>
+void printArr(Array<T> arr)
 {
     arr.print();
 }
@@ -40,9 +40,54 @@ union MyUnion
     char b;
 };
 
+void addOne(int& val)
+{
+    val++;
+}
+
+void print(int& val)
+{
+    cout << val << " ";
+}
+
 int main()
 {
     cout.setf(ios::boolalpha);
+
+    ///// 07.11.2024  ///////////////////////
+
+    Array<int> a(10, 10);
+    a.fill();
+    //a.print();
+    cout << a.capacity() << endl;
+    cout << a.size() << endl;
+    cout << a.grow() << endl;
+    //a.getData()[1000] = 9999;
+    cout << a.getData()[1000] << endl;
+
+
+    /*a.add(99);
+    cout << a.capacity() << endl;
+    cout << a.size() << endl;
+    cout << a.grow() << endl;
+    a.add(99);
+    a.add(99);
+    a.add(99);
+    a.add(99);
+    cout << a.capacity() << endl;
+    cout << a.size() << endl;
+    cout << a.grow() << endl;
+    a.add(99);
+    cout << a.capacity() << endl;
+    cout << a.size() << endl;
+    cout << a.grow() << endl;*/
+
+    //a.for_each(print);
+    //a.print();
+    //a.add(Fraction(3, 7));
+    //a.print();
+
+
 
    /* String s1("mamasssa");
     String s2("papacca");

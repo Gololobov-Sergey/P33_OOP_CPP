@@ -8,6 +8,8 @@
 #include"Reservoir.h"
 #include"Fraction.h"
 #include"String.h"
+#include"Stack.h"
+#include"Calc.h"
 
 using namespace std;
 
@@ -54,16 +56,35 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+    
+
+   /* Stack<int, 10> s;
+    s.push(50);
+    s.push(30);
+    s.push(60);
+    s.push(80);
+    s.print();
+    s.pop();
+    s.print();
+    Stack<int, 10> s2 = s;
+    s2.print();
+    s2.pop();
+    s2.print();*/
+
+    string st = "3+3^2*2";
+    Calc calc;
+    cout << st << " = " << calc(st) << endl;
+
     ///// 07.11.2024  ///////////////////////
 
-    Array<int> a(10, 10);
-    a.fill();
-    //a.print();
-    cout << a.capacity() << endl;
-    cout << a.size() << endl;
-    cout << a.grow() << endl;
-    //a.getData()[1000] = 9999;
-    cout << a.getData()[1000] << endl;
+    //Array<int> a(10, 10);
+    //a.fill();
+    ////a.print();
+    //cout << a.capacity() << endl;
+    //cout << a.size() << endl;
+    //cout << a.grow() << endl;
+    ////a.getData()[1000] = 9999;
+    //cout << a.getData()[1000] << endl;
 
 
     /*a.add(99);

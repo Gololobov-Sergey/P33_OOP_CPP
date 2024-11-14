@@ -1,6 +1,7 @@
 ﻿
 #include <iostream>
 #include <math.h>
+#include <Windows.h>
 
 #include"Student.h"
 #include"Array.h"
@@ -10,6 +11,8 @@
 #include"String.h"
 #include"Stack.h"
 #include"Calc.h"
+#include"Queue.h"
+#include"PriorityQueue.h"
 
 using namespace std;
 
@@ -56,7 +59,36 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+
     
+
+
+    /*PriorityQueue<int> q;
+    q.enqueue(10, 1);
+    q.enqueue(20, 5);
+    q.enqueue(30, 2);
+    q.enqueue(40, 2);
+    q.enqueue(50, 1);
+    q.print();
+    q.dequeue();
+    q.print();
+    q.enqueue(999, 2);
+    q.print();*/
+
+    //Queue<int> q = {1,2,3,5};
+    //q.enqueue(10);
+    //q.enqueue(50);
+    //q.enqueue(30);
+    //q.enqueue(20);
+    //q.enqueue(40);
+    //q.print();
+    //q.dequeue();
+    //q.print();
+    ////cout << q.peek() << endl;
+    //q.ring();
+    //q.print();
+
+    //int a[] = { 1,2,3,4, };
 
    /* Stack<int, 10> s;
     s.push(50);
@@ -71,9 +103,9 @@ int main()
     s2.pop();
     s2.print();*/
 
-    string st = "3+3^2*2";
+    /*string st = "3+3^2*2";
     Calc calc;
-    cout << st << " = " << calc(st) << endl;
+    cout << st << " = " << calc(st) << endl;*/
 
     ///// 07.11.2024  ///////////////////////
 

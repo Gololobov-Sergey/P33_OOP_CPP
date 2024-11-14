@@ -1,6 +1,8 @@
 #pragma once
 #include"Fraction.h"
 
+using namespace std;
+
 template<class T>
 class Array
 {

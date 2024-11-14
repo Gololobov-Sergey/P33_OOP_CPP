@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include"Reservoir.h"
+
 using namespace std;
 
 class Fraction
@@ -23,7 +24,7 @@ public:
 	void setNum(int num);
 	void setDen(int den);
 	Fraction add(const Fraction& obj);
-	Fraction min(const Fraction& obj);
+	Fraction minus(const Fraction& obj);
 	void print() const;
 	Fraction multiply(const Fraction& other);
 	Fraction divide(const Fraction& other);
@@ -78,7 +79,7 @@ Fraction Fraction::add(const Fraction& other) {
 	int newDen = den * other.den;
 	return Fraction(newNum, newDen);
 }
-Fraction Fraction::min(const Fraction& obj)
+Fraction Fraction::minus(const Fraction& obj)
 {
 	int newNum = num * obj.den - obj.num * den;
 	int newDen = den * obj.den;

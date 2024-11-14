@@ -133,12 +133,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
+    <ClInclude Include="BusStation.h" />
     <ClInclude Include="Calc.h" />
     <ClInclude Include="Fraction.h" />
     <ClInclude Include="function.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="PriorityQueue.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="Reservoir.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />

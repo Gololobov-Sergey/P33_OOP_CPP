@@ -13,6 +13,7 @@
 #include"Calc.h"
 #include"Queue.h"
 #include"PriorityQueue.h"
+#include"PrintServer.h"
 
 using namespace std;
 
@@ -29,22 +30,6 @@ void printArr(Array<T> arr)
 }
 
 
-enum class Color
-{
-    Black, White
-};
-
-enum class Animal
-{
-    CAT, DOG, Black
-};
-
-union MyUnion
-{
-    int a;
-    char b;
-};
-
 void addOne(int& val)
 {
     val++;
@@ -59,8 +44,21 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+    string fname[] = { "file1.doc", "file2.xls", "file3.txt", "file4.pdf", "file5.ppt" };
 
-    
+    PrintServer ps("10.6.6.45");
+
+    int i = 0;
+    while (true)
+    {
+        if (i % 7 == 0)
+        {
+            ps.addTask(TaskPrint(fname[rand() % 5], rand() % 3 + 5, (DEPARTMENT)(rand() % 4)));
+        }
+        ps.work();
+        i++;
+        Sleep(500);
+    }
 
 
     /*PriorityQueue<int> q;

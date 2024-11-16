@@ -140,6 +140,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="PrintServer.h" />
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Reservoir.h" />

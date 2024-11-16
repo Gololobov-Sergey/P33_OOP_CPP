@@ -10,8 +10,8 @@ using namespace std;
 template<class T, class TPri = int>
 class PriorityQueue
 {
-	Node<T>* first = nullptr;
-	Node<T>* last = nullptr;
+	Node<T, TPri>* first = nullptr;
+	Node<T, TPri>* last = nullptr;
 	size_t size;
 
 public:
@@ -46,12 +46,29 @@ PriorityQueue<T, TPri>::~PriorityQueue()
 template<class T, class TPri>
 PriorityQueue<T, TPri>::PriorityQueue(const PriorityQueue& q)
 {
+	Node<T, TPri>* temp = q.first;
+	while (temp)
+	{
+		enqueue(temp->value, temp->priority);
+		temp = temp->next;
+	}
 }
 
 template<class T, class TPri>
 PriorityQueue<T, TPri>& PriorityQueue<T, TPri>::operator=(const PriorityQueue& q)
 {
-	return PriorityQueue<T, TPri>();
+	if (&q == this)
+		return *this;
+
+	clear();
+
+	Node<T, TPri>* temp = q.first;
+	while (temp) {
+		enqueue(temp->value, temp->priority);
+		temp = temp->next;
+	}
+
+	return *this;
 }
 
 template<class T, class TPri>
@@ -95,7 +112,7 @@ void PriorityQueue<T, TPri>::dequeue()
 {
 	if (size > 0)
 	{
-		Node<T>* temp = first;
+		Node<T, TPri>* temp = first;
 		first = first->next;
 		delete temp;
 		size--;
@@ -119,7 +136,7 @@ void PriorityQueue<T, TPri>::clear()
 {
 	if (size > 0)
 	{
-		Node<T>* temp = first;
+		Node<T, TPri>* temp = first;
 		while (temp)
 		{
 			first = first->next;
@@ -133,10 +150,10 @@ void PriorityQueue<T, TPri>::clear()
 template<class T, class TPri>
 void PriorityQueue<T, TPri>::print()
 {
-	Node<T>* temp = first;
+	Node<T, TPri>* temp = first;
 	while (temp)
 	{
-		cout << "(" << temp->priority << ", " << temp->value << ") ";
+		cout << temp->value;
 		temp = temp->next;
 	}
 	cout << endl;

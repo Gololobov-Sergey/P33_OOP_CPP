@@ -1,7 +1,7 @@
 #pragma once
 #include<initializer_list>
 
-
+#include"function.h"
 #include"Node.h"
 
 using namespace std;
@@ -28,6 +28,7 @@ public:
 	size_t length();
 	void clear();
 	void print();
+	void print(int x, int y);
 
 	void ring();
 
@@ -57,13 +58,30 @@ Queue<T>::~Queue()
 template<class T>
 Queue<T>::Queue(const Queue& q)
 {
+	Node<T>* temp = q.first;
+	while (temp)
+	{
+		enqueue(temp->value);
+		temp = temp->next;
+	}
 }
 
 template<class T>
 Queue<T>& Queue<T>::operator=(const Queue& q)
 {
-	// TODO: вставьте здесь оператор return
-	return nullptr;
+	if (&q == this)
+		return *this;
+
+	clear();
+
+	Node<T>* temp = q.first;
+	while (temp)
+	{
+		enqueue(temp->value);
+		temp = temp->next;
+	}
+
+	return *this;
 }
 
 template<class T>
@@ -127,10 +145,44 @@ void Queue<T>::print()
 	Node<T>* temp = first;
 	while (temp)
 	{
-		cout << temp->value << " ";
+		cout << temp->value;
 		temp = temp->next;
 	}
 	cout << endl;
+}
+
+template<class T>
+inline void Queue<T>::print(int x, int y)
+{
+	int i = 0;
+	Node<T>* temp = first;
+	if (size < 10)
+	{
+		while (temp)
+		{
+			gotoxy(x, y++);
+			cout << temp->value;
+			temp = temp->next;
+		}
+		cout << endl;
+	}
+	else
+	{
+		gotoxy(x, y++);
+		cout << "---------- ^ ----------";
+		for (size_t i = 0; i < size-10; i++)
+		{
+			temp = temp->next;
+		}
+		while (temp)
+		{
+			gotoxy(x, y++);
+			cout << temp->value;
+			temp = temp->next;
+		}
+		cout << endl;
+	}
+	
 }
 
 template<class T>

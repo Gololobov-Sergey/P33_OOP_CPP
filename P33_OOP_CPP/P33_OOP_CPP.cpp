@@ -14,6 +14,7 @@
 #include"Queue.h"
 #include"PriorityQueue.h"
 #include"PrintServer.h"
+#include"List.h"
 
 using namespace std;
 
@@ -44,21 +45,35 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
-    string fname[] = { "file1.doc", "file2.xls", "file3.txt", "file4.pdf", "file5.ppt" };
+
+    List<int> l = { 10,2,3,15,6 };
+    l.print();
+    l.insert(999, 2);
+    //l.pop_back();
+    l.remove(3);
+    l.print();
+
+    l.printReverse();
+
+    l.sort();
+    l.print();
+
+
+    /*string fname[] = { "file1.doc", "file2.xls", "file3.txt", "file4.pdf", "file5.ppt" };
 
     PrintServer ps("10.6.6.45");
 
     int i = 0;
     while (true)
     {
-        if (i % 7 == 0)
+        if (i % 4 == 0)
         {
             ps.addTask(TaskPrint(fname[rand() % 5], rand() % 3 + 5, (DEPARTMENT)(rand() % 4)));
         }
         ps.work();
         i++;
         Sleep(500);
-    }
+    }*/
 
 
     /*PriorityQueue<int> q;

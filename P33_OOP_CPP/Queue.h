@@ -1,7 +1,7 @@
 #pragma once
 #include<initializer_list>
 
-#include"function.h"
+#include"myFunc.h"
 #include"Node.h"
 
 using namespace std;

@@ -15,6 +15,8 @@
 #include"PriorityQueue.h"
 #include"PrintServer.h"
 #include"List.h"
+#include"BTree.h"
+#include"BasePolice.h"
 
 using namespace std;
 
@@ -45,18 +47,49 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+    Protocol p;
+    cin >> p;
 
-    List<int> l = { 10,2,3,15,6 };
-    l.print();
-    l.insert(999, 2);
-    //l.pop_back();
-    l.remove(3);
-    l.print();
 
-    l.printReverse();
+    BasePolice base;
+    base.menu();
 
-    l.sort();
-    l.print();
+
+    /*BTree<int, int> b;
+    b.push_r(30, 30);
+    b.push_r(10, 10);
+    b.push_r(50, 50);
+    b.push_r(5, 5);
+    b.push_r(30, 30);
+
+    b.print();
+
+    auto i = b.getValue(20);
+    if (i)
+    {
+        cout << *i << endl;
+    }
+    else
+    {
+        cout << "Not found" << endl;
+    }
+
+    b.remove(10);
+
+    b.print();*/
+
+
+    //List<int> l = { 10,2,3,15,6 };
+    //l.print();
+    //l.insert(999, 2);
+    ////l.pop_back();
+    //l.remove(3);
+    //l.print();
+
+    //l.printReverse();
+
+    //l.sort();
+    //l.print();
 
 
     /*string fname[] = { "file1.doc", "file2.xls", "file3.txt", "file4.pdf", "file5.ppt" };

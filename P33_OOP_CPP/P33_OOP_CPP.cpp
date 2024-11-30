@@ -8,7 +8,7 @@
 #include"Time.h"
 #include"Reservoir.h"
 #include"Fraction.h"
-#include"String.h"
+//#include"String.h"
 #include"Stack.h"
 #include"Calc.h"
 #include"Queue.h"
@@ -17,6 +17,9 @@
 #include"List.h"
 #include"BTree.h"
 #include"BasePolice.h"
+#include"Relation.h"
+#include"Inherit.h"
+#include"BitString.h"
 
 using namespace std;
 
@@ -47,12 +50,44 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
-    Protocol p;
+
+    //Human h("Oleg", 16);
+    //h.info();
+    //h.kill();
+    //
+
+    //Stud st("Olga", 17, 100);
+    //st.info();
+    ///*st.kill();*/
+
+
+    //A a;
+    //a.a();
+
+    //B b;
+    //b.b();
+
+    BitString s1("1011");
+    BitString s2;
+    //String s3 = s1 + s2;
+    cout << s1 << endl; // 1100
+
+
+
+
+    /*Engine* en = new Engine;
+    {
+        Car car;
+        car.move();
+    }*/
+
+
+    /*Protocol p;
     cin >> p;
 
 
     BasePolice base;
-    base.menu();
+    base.menu();*/
 
 
     /*BTree<int, int> b;

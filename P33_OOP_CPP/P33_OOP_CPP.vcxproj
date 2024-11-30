@@ -134,17 +134,21 @@
   <ItemGroup>
     <ClInclude Include="Array.h" />
     <ClInclude Include="BasePolice.h" />
+    <ClInclude Include="BitString.h" />
     <ClInclude Include="BTree.h" />
     <ClInclude Include="BusStation.h" />
     <ClInclude Include="Calc.h" />
     <ClInclude Include="Fraction.h" />
+    <ClInclude Include="Inherit.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Passport.h" />
     <ClInclude Include="PrintServer.h" />
     <ClInclude Include="PriorityQueue.h" />
     <ClInclude Include="Queue.h" />
+    <ClInclude Include="Relation.h" />
     <ClInclude Include="Reservoir.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="String.h" />

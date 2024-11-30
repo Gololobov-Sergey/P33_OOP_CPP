@@ -22,34 +22,45 @@ public:
         str[0] = '\0';
     }
 
-    String(const char* input) {
-        size = strlen(input);
-        str = new char[size + 1];
-        for (int i = 0; i <= size; ++i) {
-            str[i] = input[i];
-        }
+    String(const char* input) 
+    {
+        copy(input);
     }
 
-    String(const String& other) {
-        size = other.size;
-        str = new char[size + 1];
-        for (int i = 0; i <= size; ++i) {
-            str[i] = other.str[i];
-        }
+    String(const String& other) 
+    {
+        copy(other.str);
     }
 
     ~String() {
         delete[] str;
     }
 
+    String& operator=(const String& obj) {
+        if (this == &obj) {
+            return *this;
+        }
+
+        delete[] str;
+
+        copy(obj.str);
+
+        return *this;
+    }
+
+    void copy(const char* st)
+    {
+        size = strlen(st);
+        str = new char[size + 1];
+        for (int i = 0; i <= size; ++i) {
+            str[i] = st[i];
+        }
+    }
+
     void assign(const String& other) {
         if (this == &other) return;
         delete[] str;
-        size = other.size;
-        str = new char[size + 1];
-        for (int i = 0; i <= size; ++i) {
-            str[i] = other.str[i];
-        }
+        copy(other.str);
     }
 
     void input() {

@@ -20,6 +20,8 @@
 #include"Relation.h"
 #include"Inherit.h"
 #include"BitString.h"
+#include"Animal.h"
+#include"Shape.h"
 
 using namespace std;
 
@@ -46,9 +48,76 @@ void print(int& val)
     cout << val << " ";
 }
 
+Shape* getShape(string type)
+{
+    if (type == "S")
+        return new Square(0, 0, 0);
+    if (type == "R")
+        return new Rectangle_(0, 0, 0, 0);
+    if (type == "C")
+        return new Circle(0, 0, 0);
+}
+
 int main()
 {
     cout.setf(ios::boolalpha);
+
+    ///// 05.12.2024  ///////////////////////
+
+
+    /*
+    const int size = 3;
+    Shape* sh[] = { new Square(3,4,5), new Circle(3,4,5)};
+
+    ofstream out("shapes.txt");
+    out << size << endl;
+    for (size_t i = 0; i < 2; i++)
+    {
+        sh[i]->save(out);
+    }*/
+    
+
+    ifstream in("shapes.txt");
+    int size;
+    in >> size;
+    in.get();
+    Array<Shape*> sh1;
+    for (size_t i = 0; i < size; i++)
+    {
+        string type;
+        getline(in, type);
+        Shape* s = getShape(type);
+        s->load(in);
+        sh1.add(s);
+    }
+
+
+
+
+    //Animal* a = new Animal("Noname", 0);
+
+
+    //Animal* c = new Cat("Tom", 3);
+    //c->info();
+    //c->voice();
+    ////delete c;
+
+
+
+    //Animal* d = new Dog("Spike", 5);
+    //d->info();
+    //d->voice();
+    //cout << endl;
+
+
+    //Animal* sc = new SiamCat("Tom II", 3);
+
+    //Animal* an[] = { c, d, sc, a };
+    //for (size_t i = 0; i < 4; i++)
+    //{
+    //    an[i]->info();
+    //    an[i]->voice();
+    //}
 
 
     //Human h("Oleg", 16);
@@ -67,10 +136,10 @@ int main()
     //B b;
     //b.b();
 
-    BitString s1("1011");
-    BitString s2;
-    //String s3 = s1 + s2;
-    cout << s1 << endl; // 1100
+    //BitString s1("1011");
+    //BitString s2;
+    ////String s3 = s1 + s2;
+    //cout << s1 << endl; // 1100
 
 
 

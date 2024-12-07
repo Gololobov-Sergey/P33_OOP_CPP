@@ -22,6 +22,7 @@
 #include"BitString.h"
 #include"Animal.h"
 #include"Shape.h"
+#include"WarOfWorld.h"
 
 using namespace std;
 
@@ -62,6 +63,11 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+
+    WarOfWorld war(10);
+    war.game();
+
+
     ///// 05.12.2024  ///////////////////////
 
 
@@ -77,7 +83,7 @@ int main()
     }*/
     
 
-    ifstream in("shapes.txt");
+    /*ifstream in("shapes.txt");
     int size;
     in >> size;
     in.get();
@@ -89,7 +95,7 @@ int main()
         Shape* s = getShape(type);
         s->load(in);
         sh1.add(s);
-    }
+    }*/
 
 
 

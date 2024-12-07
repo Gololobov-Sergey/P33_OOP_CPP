@@ -39,6 +39,7 @@ public:
 	size_t length() const;
 	void clear();
 	void print() const;
+	void print(int x, int y) const;
 	void printReverse() const;
 
 	void sort();
@@ -66,7 +67,6 @@ Node<T, TPri>* List<T, TPri>::getNode(size_t index)
 			temp = temp->prev;
 		}
 	}
-	cout << 1 << endl;
 	return temp;
 }
 
@@ -246,6 +246,12 @@ T& List<T, TPri>::operator[](size_t index)
 }
 
 template<class T, class TPri>
+inline size_t List<T, TPri>::length() const
+{
+	return size;
+}
+
+template<class T, class TPri>
 void List<T, TPri>::clear()
 {
 	Node<T, TPri>* temp = first;
@@ -264,10 +270,22 @@ void List<T, TPri>::print() const
 	Node<T, TPri>* temp = first;
 	while (temp)
 	{
-		cout << temp->value << " ";
+		cout << temp->value;
 		temp = temp->next;
 	}
 	cout << endl;
+}
+
+template<class T, class TPri>
+void List<T, TPri>::print(int x, int y) const
+{
+	Node<T, TPri>* temp = first;
+	while (temp)
+	{
+		gotoxy(x, y++);
+		cout << temp->value;
+		temp = temp->next;
+	}
 }
 
 template<class T, class TPri>

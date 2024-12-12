@@ -89,3 +89,35 @@ public:
 		//a3 = 9;
 	}
 };
+
+
+class Device
+{
+public:
+	int id;
+
+	Device(int id) : id(id) {}
+
+	int getId() { return id; }
+};
+
+class WiFi : virtual public Device
+{
+public:
+	WiFi(int id) : Device(id) {}
+	
+};
+
+class LAN : virtual public Device
+{
+public:
+	LAN(int id) : Device(id) {}
+};
+
+class Router : public WiFi, public LAN
+{
+public:
+	Router(int idWiFi, int idLAN) : WiFi(idWiFi), LAN(idLAN), Device(200) {}
+
+};
+

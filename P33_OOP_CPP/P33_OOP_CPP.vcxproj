@@ -141,6 +141,7 @@
     <ClInclude Include="Calc.h" />
     <ClInclude Include="Fraction.h" />
     <ClInclude Include="Inherit.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="myFunc.h" />

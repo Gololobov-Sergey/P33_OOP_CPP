@@ -23,6 +23,7 @@
 #include"Animal.h"
 #include"Shape.h"
 #include"WarOfWorld.h"
+#include"Interface.h"
 
 using namespace std;
 
@@ -59,13 +60,69 @@ Shape* getShape(string type)
         return new Circle(0, 0, 0);
 }
 
+
+double super_func(ILogProvider& log)
+{
+    int a, b;
+    cin >> a >> b;
+    if (b == 0)
+    {
+        log.SaveError("Division by zero!");
+        return 0;
+    }
+    return (double)a / b;
+}
+
+void print(Printable& o)
+{
+    o.print();
+}
+
+
+void GetVoice(Animal a)
+{
+    a.voice();
+}
+
+
 int main()
 {
     cout.setf(ios::boolalpha);
 
+    ///// 12.12.2024  ///////////////////////
 
-    WarOfWorld war(10);
-    war.game();
+
+    Router r(123, 456);
+    cout << r.LAN::getId() << endl;
+    cout << r.WiFi::getId() << endl;
+
+
+    /*Cat cat("Tom", 3);
+    GetVoice(cat);*/
+
+
+    /*ConsoleLog log;
+
+    FileLog flog("log.txt");
+
+    cout << super_func(log) << endl;
+    cout << super_func(flog) << endl;*/
+
+    /*Animal* cat = new Cat("Tom", 3);
+    cat->info();
+    Cat* c = dynamic_cast<Cat*>(cat);
+    if (c)
+    {
+        c->CatchMouse();
+        c->getMouse();
+    }
+    else
+    {
+        cout << "Not Cat" << endl;
+    }*/
+    /*WarOfWorld war(10);
+    war.game();*/
+
 
 
     ///// 05.12.2024  ///////////////////////

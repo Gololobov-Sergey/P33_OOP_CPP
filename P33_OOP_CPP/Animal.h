@@ -4,33 +4,44 @@
 using namespace std;
 
 
+class Printable
+{
+public:
+	virtual void print() = 0;
+};
+
 class Animal
 {
 	string name;
 	int age;
 
 public:
-	Animal(string name, int age) : name(name), age(age) { voice(); }
+	Animal(string name, int age) : name(name), age(age) {  }
 
 	virtual ~Animal() { cout << "Dest Animal" << endl; }
 
-	void info()
+	void info() const
 	{
 		cout << "Name : " << name << endl;
 		cout << "Age  : " << age << endl;
 	}
 
-	virtual void voice() = 0;
+	virtual void voice()
+	{
+		cout << "????????" << endl;
+	}
 };
 
-void Animal::voice()
-{
-	cout << "????????" << endl;
-}
+//void Animal::voice()
+//{
+//	cout << "????????" << endl;
+//}
 
 
-class Cat : public Animal
+class Cat : public Animal, public Printable
 {
+	int mouse = 0;
+
 public:
 	Cat(string name, int age) : Animal(name, age) {}
 
@@ -40,13 +51,29 @@ public:
 	{
 		cout << "Mau Mau" << endl;
 	}
+
+	virtual void print() override
+	{
+		info();
+	}
+
+	void CatchMouse()
+	{
+		mouse++;
+	}
+
+	void getMouse()
+	{
+		cout << mouse << endl;
+	}
+
 };
 
 
-class SiamCat : public Animal
+class SiamCat : public Cat
 {
 public:
-	SiamCat(string name, int age) : Animal(name, age) {}
+	SiamCat(string name, int age) : Cat(name, age) {}
 
 	virtual void voice() override
 	{
@@ -75,7 +102,7 @@ public:
 
 	virtual void voice() override
 	{
-		Animal::voice();
+		//Animal::voice();
 	}
 };
 

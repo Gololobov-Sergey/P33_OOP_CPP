@@ -1,0 +1,1 @@
+Dec 14 2024 | 13:38:26 | C:\Users\gololobov\source\repos\P33_OOP_CPP\P33_OOP_CPP\P33_OOP_CPP.cpp | 106 | Value b = 0

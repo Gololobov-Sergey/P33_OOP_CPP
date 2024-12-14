@@ -105,6 +105,9 @@ template<class T, class TPri>
 void List<T, TPri>::push_front(const T& value)
 {
 	Node<T, TPri>* newNode = new Node<T, TPri>(value);
+	if (!newNode)
+		throw bad_alloc("out of memory in push_front");
+
 	if (size == 0)
 	{
 		first = last = newNode;
@@ -122,6 +125,9 @@ template<class T, class TPri>
 void List<T, TPri>::push_back(const T& value)
 {
 	Node<T, TPri>* newNode = new Node<T, TPri>(value);
+	if (!newNode)
+		throw bad_alloc("out of memory in push_back");
+
 	if (size == 0)
 	{
 		first = last = newNode;
@@ -227,7 +233,7 @@ T List<T, TPri>::back() const
 {
 	if(last)
 		return last->value;
-	return T();
+	throw range_error("List is empty");
 }
 
 template<class T, class TPri>
@@ -235,14 +241,17 @@ T List<T, TPri>::front() const
 {
 	if (first)
 		return first->value;
-	return T();
+	throw range_error("List is empty");
 }
 
 template<class T, class TPri>
 T& List<T, TPri>::operator[](size_t index)
 {
-	assert(index >= 0 && index < size);
-	return getNode(index)->value;
+	//assert(index >= 0 && index < size);
+	if(index >= 0 && index < size)
+		return getNode(index)->value;
+	throw out_of_range("Index out of range");
+
 }
 
 template<class T, class TPri>

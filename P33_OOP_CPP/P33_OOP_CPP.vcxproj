@@ -144,6 +144,7 @@
     <ClInclude Include="Interface.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MyException.h" />
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Passport.h" />

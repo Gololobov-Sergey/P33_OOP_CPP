@@ -24,6 +24,7 @@
 #include"Shape.h"
 #include"WarOfWorld.h"
 #include"Interface.h"
+#include"MyException.h"
 
 using namespace std;
 
@@ -68,7 +69,11 @@ double super_func(ILogProvider& log)
     if (b == 0)
     {
         log.SaveError("Division by zero!");
-        return 0;
+        throw "Error";
+    }
+    if (b == 100)
+    {
+        throw 999;
     }
     return (double)a / b;
 }
@@ -89,12 +94,43 @@ int main()
 {
     cout.setf(ios::boolalpha);
 
+    ///// 14.12.2024  ///////////////////////
+
+    try
+    {
+        int a, b;
+        cin >> a >> b;
+        if (b == 0)
+        {
+            //throw invalid_argument("b = 0");
+            throw MyException(__DATE__, __TIME__, __LINE__, "Value b = 0", __FILE__, "log1.txt");
+        }
+
+        cout << a / b << endl;
+    }
+    catch (int a)
+    {
+        cout << "Error - " << a << endl;
+    }
+    catch (MyException& err)
+    {
+        cout << err.getError() << endl;
+        err.saveToFile();
+    }
+    catch (...)
+    {
+        cout << "Fatal error" << endl;
+    }
+
+    
+
+
     ///// 12.12.2024  ///////////////////////
 
 
-    Router r(123, 456);
+    /*Router r(123, 456);
     cout << r.LAN::getId() << endl;
-    cout << r.WiFi::getId() << endl;
+    cout << r.WiFi::getId() << endl;*/
 
 
     /*Cat cat("Tom", 3);
@@ -104,9 +140,22 @@ int main()
     /*ConsoleLog log;
 
     FileLog flog("log.txt");
+    try 
+    {
+        cout << super_func(log) << endl;
+        cout << super_func(flog) << endl;
+    }
+    catch (int err)
+    {
 
-    cout << super_func(log) << endl;
-    cout << super_func(flog) << endl;*/
+    }
+    catch (const char* err)
+    {
+        cout << err << endl;
+    }*/
+
+
+
 
     /*Animal* cat = new Cat("Tom", 3);
     cat->info();

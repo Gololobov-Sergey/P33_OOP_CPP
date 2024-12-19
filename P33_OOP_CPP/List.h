@@ -125,8 +125,8 @@ template<class T, class TPri>
 void List<T, TPri>::push_back(const T& value)
 {
 	Node<T, TPri>* newNode = new Node<T, TPri>(value);
-	if (!newNode)
-		throw bad_alloc("out of memory in push_back");
+	/*if (!newNode)
+		throw bad_alloc("out of memory in push_back");*/
 
 	if (size == 0)
 	{

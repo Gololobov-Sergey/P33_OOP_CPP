@@ -25,6 +25,7 @@
 #include"WarOfWorld.h"
 #include"Interface.h"
 #include"MyException.h"
+#include"SmartPointer.h"
 
 using namespace std;
 
@@ -32,6 +33,15 @@ void printStudent(Student st)
 {
     cout << Student::getCount() << endl;
     st.print();
+}
+
+Student fffff()
+{
+    Student s(55);
+
+    //
+
+    return s;
 }
 
 template<class T>
@@ -90,37 +100,100 @@ void GetVoice(Animal a)
 }
 
 
+void fract(Fraction&& f)
+{
+    f.print();
+}
+
+void fract(const Fraction& f)
+{
+    f.print();
+}
+
+
+
+void function()
+{
+    SmartPointer<Student> sm(new Student(99, "Vasya", 30));
+
+    sm->print();
+
+    //SmartPointer<Student> sm1(sm);
+
+    //sm1->print();
+
+    int a;
+    cin >> a;
+    if (a == 0)
+        throw 1;
+
+
+    //delete st;
+}
+
 int main()
 {
     cout.setf(ios::boolalpha);
 
+    ///// 19.12.2024  ///////////////////////
+    
+    /*int b = 9;
+    int* pb = &b;
+    *pb = 99;
+
+    int a = 9;
+    int& ra = a;
+    ra = 99;
+
+    int&& r = 9;
+
+
+    function();
+
+    Fraction f(2, 5);
+    
+    fract(f);
+
+    fract(Fraction(3, 7));*/
+
+    //auto_ptr<Fraction> f(new Fraction(1, 5));
+
+    unique_ptr<Fraction> f1 = make_unique<Fraction>(1,2);
+    unique_ptr<Fraction> f2 = move(f1);
+
+    f2->print();
+
+    
+    
+
+
     ///// 14.12.2024  ///////////////////////
 
-    try
-    {
-        int a, b;
-        cin >> a >> b;
-        if (b == 0)
-        {
-            //throw invalid_argument("b = 0");
-            throw MyException(__DATE__, __TIME__, __LINE__, "Value b = 0", __FILE__, "log1.txt");
-        }
+    //try
+    //{
+    //    int a, b;
+    //    cin >> a >> b;
+    //    if (b == 0)
+    //    {
+    //        //throw invalid_argument("b = 0");
+    //        throw MyException(__DATE__, __TIME__, __LINE__, "Value b = 0", __FILE__, "log1.txt");
+    //    }
 
-        cout << a / b << endl;
-    }
-    catch (int a)
-    {
-        cout << "Error - " << a << endl;
-    }
-    catch (MyException& err)
-    {
-        cout << err.getError() << endl;
-        err.saveToFile();
-    }
-    catch (...)
-    {
-        cout << "Fatal error" << endl;
-    }
+    //    cout << a / b << endl;
+    //}
+    //catch (int a)
+    //{
+    //    cout << "Error - " << a << endl;
+    //}
+    //catch (MyException& err)
+    //{
+    //    cout << err.getError() << endl;
+    //    err.saveToFile();
+    //}
+    //catch (...)
+    //{
+    //    cout << "Fatal error" << endl;
+    //}
 
     
 

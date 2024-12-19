@@ -25,7 +25,7 @@ class Student
 public:
 
 
-	Student(int id) : Student(id, "No name", 0) {}
+	Student(int id = 0) : Student(id, "No name", 0) {}
 
 	Student(int id, const char* n, int a) : id{id}
 	{

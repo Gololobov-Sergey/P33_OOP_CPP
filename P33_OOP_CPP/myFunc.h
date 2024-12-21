@@ -4,6 +4,19 @@
 
 using namespace std;
 
+void foo()
+{
+	cout << "Foo" << endl;
+}
+
+
+namespace FOO
+{
+	void foo1()
+	{
+		cout << "FOO::DOO::foo" << endl;
+	}
+}
 
 enum Color
 {

@@ -26,6 +26,8 @@
 #include"Interface.h"
 #include"MyException.h"
 #include"SmartPointer.h"
+#include"Namespace.h"
+#include<vector>
 
 using namespace std;
 
@@ -131,9 +133,74 @@ void function()
     //delete st;
 }
 
+//using namespace FOO;
+
+namespace BOO = FOO::DOO;
+
 int main()
 {
+
     cout.setf(ios::boolalpha);
+
+
+    time_t timestamp;
+    time(&timestamp);
+    struct tm datetime;
+    localtime_s(&datetime , &timestamp);
+    cout << datetime.tm_hour << endl;
+    char buff[80];
+    ctime_s(buff, 80, &timestamp);
+    cout << buff << endl;
+
+    strftime(buff, 80, "%d.%m.%Y", &datetime);
+    cout << buff;
+
+    /*using std::cout;
+
+
+    vector<int> v({ 1,2,4,6 });
+    for (int i : v)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    auto i = v.begin() + 2;
+    cout << *i << endl;
+
+    v.insert(v.begin() + 2, 999);
+    for (int i : v)
+    {
+        cout << i << " ";
+    }
+    cout << endl;*/
+
+
+    /*cout << endl;
+    cout << v.size() << endl;
+    cout << v.capacity() << endl;
+    cout << v.max_size() << endl;
+    v.push_back(99);
+    cout << endl;
+    cout << v.size() << endl;
+    cout << v.capacity() << endl;
+    v.push_back(99);
+    v.push_back(99);
+    cout << endl;
+    cout << v.size() << endl;
+    cout << v.capacity() << endl;*/
+
+    /*foo();
+    FOO::foo();
+
+    FOO::DOO::foo2();
+    
+    
+    {
+        using namespace FOO;
+        
+
+    }*/
 
     ///// 19.12.2024  ///////////////////////
     
@@ -158,10 +225,10 @@ int main()
 
     //auto_ptr<Fraction> f(new Fraction(1, 5));
 
-    unique_ptr<Fraction> f1 = make_unique<Fraction>(1,2);
+    /*unique_ptr<Fraction> f1 = make_unique<Fraction>(1,2);
     unique_ptr<Fraction> f2 = move(f1);
 
-    f2->print();
+    f2->print();*/
 
     
     

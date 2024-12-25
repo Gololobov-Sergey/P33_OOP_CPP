@@ -15,6 +15,9 @@ class Student
 
 	char* name;
 	int age;
+
+	//vector<int> marks;
+
 	int* marks = nullptr;
 	int size = 0;
 
@@ -32,7 +35,7 @@ public:
 		//type = TYPE::ASPIRANT;
 		setAge(a);
 		setName(n);
-		cout << "Constructor" << endl;
+		//cout << "Constructor" << endl;
 		count++;
 	}
 
@@ -40,7 +43,7 @@ public:
 	{
 		delete name;
 		delete marks;
-		cout << "Destructor" << endl;
+		//cout << "Destructor" << endl;
 		count--;
 	}
 
@@ -56,7 +59,7 @@ public:
 		{
 			marks[i] = obj.marks[i];
 		}
-		cout << "Constructor Copy" << endl;
+		//cout << "Constructor Copy" << endl;
 		count++;
 	}
 
@@ -119,7 +122,7 @@ public:
 		{
 			cout << marks[i] << " ";
 		}
-		cout << endl;
+		cout << endl << endl;
 	}
 
 	void addMark(int mark)
@@ -133,11 +136,41 @@ public:
 		return marks;
 	}
 
+	int getSumMarks() const
+	{
+		int sum = 0;
+		for (size_t i = 0; i < size; i++)
+		{
+			sum += marks[i];
+		}
+		return sum;
+	}
 
 	static int getCount()
 	{
 		return count;
 	}
+
+	friend ostream& operator<<(ostream& out, const Student& st);
+
+	bool operator<(const Student& st)
+	{
+		if(strcmp(this->name, st.name) == -1)
+			return true;
+		return false;
+	}
+
 };
 
 int Student::count = 0;
+
+
+ostream& operator<<(ostream& out, const Student& st)
+{
+	out << setw(10) << left << st.name << setw(5) << left << st.age << " ";
+	for (size_t i = 0; i < st.size; i++)
+	{
+		out << st.marks[i] << " ";
+	}
+	return out;
+}

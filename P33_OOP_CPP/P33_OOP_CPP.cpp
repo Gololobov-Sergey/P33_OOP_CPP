@@ -28,6 +28,7 @@
 #include"SmartPointer.h"
 #include"Namespace.h"
 #include<vector>
+#include<list>
 
 using namespace std;
 
@@ -137,13 +138,147 @@ void function()
 
 namespace BOO = FOO::DOO;
 
+bool num5(int a)
+{
+    return a > 3;
+}
+
+class Comparator
+{
+public:
+    bool operator()(int a)
+    {
+        return a > 3;
+    }
+};
+
+template<class Cont>
+void PrintContainer(Cont container)
+{
+    for (auto elem : container)
+    {
+        cout << elem << " ";
+    }
+    cout << endl;
+}
+
 int main()
 {
 
     cout.setf(ios::boolalpha);
 
 
-    time_t timestamp;
+    Comparator cm;
+    cm(10);
+
+    vector<int> v({ 1,2,4,6 });
+    //for (int i : v)
+    //{
+    //    cout << i << " ";
+    //}
+    //cout << endl;
+
+    ////erase_if(v, [](int a) { return a > 3; });
+    //erase_if(v, cm);
+
+    //for (int i : v)
+    //{
+    //    cout << i << " ";
+    //}
+    //cout << endl;
+
+    //int b = 9, c = 0;
+
+    //auto f = [&](int a) { cout << a << " " << b++ << endl; };
+    //f(10);
+    //cout << b << endl;
+
+    //auto l = [](int a) -> int
+    //    {
+    //        if (a > 10)
+    //            return 2;
+    //        else
+    //            return 2.5;
+    //    };
+
+    //auto a = [](int a) { return a > 3; };
+    //cout << a(10) << endl;
+
+
+    /*vector<Fraction> f = {Fraction(1,6)};
+    f.push_back(Fraction(3, 5));
+    f.emplace(f.begin(), 5, 9);
+    PrintContainer(f);*/
+
+
+    //list<int> l(v.begin() + 1, v.begin() + 3);
+    //list<int> l = { 1,4,6,8,6,4,3,2 };
+    //PrintContainer(l);
+
+    /*auto i = l.begin();
+    advance(i, 2);
+    l.insert(i, 999);*/
+    
+    //l.insert(next(l.begin(), 2), 999);
+    
+    //l.erase(next(l.begin(), 2), next(l.begin(), 5));
+
+    //erase_if(l, [](int a) { return a % 2 == 0; });
+
+    //l.remove(6);
+
+    //l.remove_if([](int a) { return a % 2 == 0; });
+
+    //l.sort([](int a, int b) { return a > b; });
+
+    //PrintContainer(l);
+
+
+
+    Student st1(1, "Vasya", 20);
+    st1.addMark(7);
+    st1.addMark(8);
+    st1.addMark(12);
+    st1.addMark(9);
+
+    Student st2(1, "Olga", 18);
+    st2.addMark(11);
+    st2.addMark(12);
+    st2.addMark(12);
+    st2.addMark(10);
+
+    Student st3(1, "Oleg", 22);
+    st3.addMark(6);
+    st3.addMark(8);
+    st3.addMark(10);
+    st3.addMark(8);
+
+    Student st4(1, "Petya", 15);
+    st4.addMark(12);
+    st4.addMark(8);
+    st4.addMark(10);
+    st4.addMark(9);
+
+
+    list<Student> students = { st1, st2, st3, st4 };
+    for (Student& st : students)
+    {
+        cout << st << endl;
+    }
+    cout << endl;
+
+    //students.sort();
+    //students.sort([](const Student& st1, const Student& st2) { return st1.getAge() < st2.getAge(); });
+         
+    students.sort([](const Student& st1, const Student& st2) { return st1.getSumMarks() > st2.getSumMarks(); });
+
+    for (Student& st : students)
+    {
+        cout << st << endl;
+    }
+
+
+    /*time_t timestamp;
     time(&timestamp);
     struct tm datetime;
     localtime_s(&datetime , &timestamp);
@@ -153,7 +288,7 @@ int main()
     cout << buff << endl;
 
     strftime(buff, 80, "%d.%m.%Y", &datetime);
-    cout << buff;
+    cout << buff;*/
 
     /*using std::cout;
 

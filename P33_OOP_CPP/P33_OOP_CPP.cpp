@@ -29,6 +29,9 @@
 #include"Namespace.h"
 #include<vector>
 #include<list>
+#include<map>
+#include<algorithm>
+
 
 using namespace std;
 
@@ -162,16 +165,113 @@ void PrintContainer(Cont container)
     cout << endl;
 }
 
+void PrintContainer(int* a)
+{
+    for (size_t i = 0; i < 7; i++)
+    {
+        cout << a[i] << " ";
+    }
+    cout << endl;
+}
+
 int main()
 {
 
     cout.setf(ios::boolalpha);
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
 
 
-    Comparator cm;
+
+    ///// 09.01.2025  ///////////////////////
+
+    int a[] = { 1,2,3,5,6,7,89 };
+    vector<int> v{ 12,3,-5,7,9,0 };
+    list<int> l{ 12,3,5,7,9,0 };
+    for_each(v.begin(), v.end(), [](int& a) { a++; });
+    for_each(a, a+7, [](int& a) { a++; });
+    for_each_n(l.begin(), 3, [](int& a) { a+=3; });
+    PrintContainer(v);
+    PrintContainer(l);
+    PrintContainer(a);
+
+    cout << all_of(v.begin(), v.end(), [](int a) { return a > 0; }) << endl;
+
+
+    /*multimap<string, int> mm;
+
+    mm.insert({ "one", 11 });
+    mm.insert({ "one", 1 });
+    mm.insert({ "one", 111 });
+
+    for (auto e : mm)
+    {
+        cout << e.first << " " << e.second << endl;
+    }
+
+    auto i = mm.find("one");
+    if(i != mm.end())
+        cout << i->first << " " << i->second << endl;
+
+    cout << mm.count("one") << endl;*/
+
+    //map<string, int> m;
+    //string s;
+    //ifstream in("test.txt");
+    //while (getline(in, s, ' '))
+    //    if (s != "")
+    //    {
+    //        transform(s.begin(), s.end(), s.begin(), tolower);
+    //        erase_if(s, [](char t) { return t == '\n' || t == ',' || t == '.' || t == ';'; });
+    //        m[s]++;
+    //    }
+
+    //multimap<int, string, greater<int>> mm;
+    //for (auto e : m)
+    //{
+    //    mm.insert({ e.second, e.first });
+    //}
+
+    ////for (auto e : mm)
+    ////{
+    ////    cout << e.first << " " << e.second << endl;
+    ////}
+
+    //for (auto i = mm.begin(); i != next(mm.begin(),5); i++)
+    //{
+    //    cout << i->first << " " << i->second << endl;
+    //}
+
+
+    /*map<string, int> m;
+    m["one"] = 1;
+    m["one"] = 99;
+    m["zero"] = 0;
+    auto i = m.insert({ "one1", 11 });
+  
+
+    cout << m.contains("one1") << endl;
+    cout << m.count("one1") << endl;
+
+    pair<string, int> p{ "111", 111 };
+    m.insert(p);
+
+    for (auto e : m)
+    {
+        cout << e.first << " " << e.second << endl;
+    }
+
+    auto f = m.find("one87");
+    if (f != m.end())
+        cout << f->first << " " << f->second << endl;
+
+    cout << (2 % 2 == 0) << endl;
+    cout << (2 & 1 == 0) << endl;*/
+
+    /*Comparator cm;
     cm(10);
 
-    vector<int> v({ 1,2,4,6 });
+    vector<int> v({ 1,2,4,6 });*/
     //for (int i : v)
     //{
     //    cout << i << " ";
@@ -235,47 +335,47 @@ int main()
 
 
 
-    Student st1(1, "Vasya", 20);
-    st1.addMark(7);
-    st1.addMark(8);
-    st1.addMark(12);
-    st1.addMark(9);
+    //Student st1(1, "Vasya", 20);
+    //st1.addMark(7);
+    //st1.addMark(8);
+    //st1.addMark(12);
+    //st1.addMark(9);
 
-    Student st2(1, "Olga", 18);
-    st2.addMark(11);
-    st2.addMark(12);
-    st2.addMark(12);
-    st2.addMark(10);
+    //Student st2(1, "Olga", 18);
+    //st2.addMark(11);
+    //st2.addMark(12);
+    //st2.addMark(12);
+    //st2.addMark(10);
 
-    Student st3(1, "Oleg", 22);
-    st3.addMark(6);
-    st3.addMark(8);
-    st3.addMark(10);
-    st3.addMark(8);
+    //Student st3(1, "Oleg", 22);
+    //st3.addMark(6);
+    //st3.addMark(8);
+    //st3.addMark(10);
+    //st3.addMark(8);
 
-    Student st4(1, "Petya", 15);
-    st4.addMark(12);
-    st4.addMark(8);
-    st4.addMark(10);
-    st4.addMark(9);
+    //Student st4(1, "Petya", 15);
+    //st4.addMark(12);
+    //st4.addMark(8);
+    //st4.addMark(10);
+    //st4.addMark(9);
 
 
-    list<Student> students = { st1, st2, st3, st4 };
-    for (Student& st : students)
-    {
-        cout << st << endl;
-    }
-    cout << endl;
+    //list<Student> students = { st1, st2, st3, st4 };
+    //for (Student& st : students)
+    //{
+    //    cout << st << endl;
+    //}
+    //cout << endl;
 
-    //students.sort();
-    //students.sort([](const Student& st1, const Student& st2) { return st1.getAge() < st2.getAge(); });
-         
-    students.sort([](const Student& st1, const Student& st2) { return st1.getSumMarks() > st2.getSumMarks(); });
+    ////students.sort();
+    ////students.sort([](const Student& st1, const Student& st2) { return st1.getAge() < st2.getAge(); });
+    //     
+    //students.sort([](const Student& st1, const Student& st2) { return st1.getSumMarks() > st2.getSumMarks(); });
 
-    for (Student& st : students)
-    {
-        cout << st << endl;
-    }
+    //for (Student& st : students)
+    //{
+    //    cout << st << endl;
+    //}
 
 
     /*time_t timestamp;

@@ -136,6 +136,11 @@ public:
 		return marks;
 	}
 
+	int getSizeMarks() const
+	{
+		return size;
+	}
+
 	int getSumMarks() const
 	{
 		int sum = 0;
